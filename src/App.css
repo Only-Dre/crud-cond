@@ -1,0 +1,76 @@
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f7f8fb;
+  margin: 0;
+  color: #222;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 24px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+main {
+  padding: 10px 0;
+}
+
+/* form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 480px;
+}
+input[type="text"], input[type="password"] {
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #2d6cdf;
+  color: white;
+  font-weight: 600;
+}
+button.secondary {
+  background: #e6e9f2;
+  color: #222;
+}
+
+/* list */
+.contact-list {
+  margin-top: 10px;
+  width: 100%;
+}
+.contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.contact-info { display:flex; gap:12px; align-items:center; }
+.contact-actions button { margin-left: 8px; }
+
+/* small helpers */
+.inline { display:inline-block; margin-right:8px; }
