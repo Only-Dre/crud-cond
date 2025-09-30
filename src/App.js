@@ -10,10 +10,11 @@ import "./App.css";
 
 function App() {
   // Estados globais
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [activeScreen, setActiveScreen] = useState("welcome");
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Inicializa sem estar logado
+  const [username, setUsername] = useState(""); // Criação de espaço vazio para adição de username
+  const [activeScreen, setActiveScreen] = useState("welcome"); // Tela ativa - Selecionada
 
+  // Gerando dois contatos padrão para teste
   const [contacts, setContacts] = useState([
     { id: 1, name: "João Silva", phone: "11987654321" },
     { id: 2, name: "Maria Souza", phone: "21912345678" },
@@ -21,42 +22,58 @@ function App() {
 
   const [contactToEdit, setContactToEdit] = useState(null);
 
-  // ===== LOGIN =====
+  // LOGIN
   const handleLogin = (user) => {
-    if (user && user.trim() !== "") {
-      setUsername(user.trim());
+    if (user && user.trim() !== "") { // .trim utilizado para limpeza e 'correção' de username na parte de login
+      // Exemplo:
+      // user: '  andre ' | se transforma em 'andre'.
+      setUsername(user.trim()); 
+      // Após .trim, retorna o login como verdadeiro.
       setIsLoggedIn(true);
       setActiveScreen("welcome");
+      // Caso os campos não estejam completos, retorna:
     } else {
       alert("Preencha os campos corretamente!");
     }
   };
 
   const handleLogout = () => {
+    // Define novamente o login como false, apaga o username e retorna ao menu de boas-vindas
     setIsLoggedIn(false);
     setUsername("");
     setActiveScreen("welcome");
   };
 
-  // ===== CRUD =====
+  // CRUD
+  // Create - Read - Update - Delete
+
+  // Os Dados de contatos NUNCA devem ser alterados dentro do Array const contacts
+  // A alteração só pode ser realizada em setContacts
+
+  // "...contacts" - captura todos os contatos e cria uma nova lista com eles
   const addContact = (contact) => {
+    // "...contacts, id:Date.now" garante que o novo contato receba uma identificação ÚNICA para que não haja erro na listagem
     setContacts([...contacts, { ...contact, id: Date.now() }]);
+    // Após setar o ID, o item é levado diretamente pra lista.
     setActiveScreen("list");
   };
 
+  // Encontra o contato a ser atualizado pelo ID.
   const updateContact = (updated) => {
     setContacts(
+      // Cria um novo array: se o ID do contato (c) for igual ao do contato atualizado, substitui; senão, mantém o original.
       contacts.map((c) => (c.id === updated.id ? updated : c))
     );
     setContactToEdit(null);
     setActiveScreen("list");
   };
 
+  // Filtra a lista de contatos, encontra o conteúdo pelo ID e o apaga da lista
   const deleteContact = (id) => {
     setContacts(contacts.filter((c) => c.id !== id));
   };
 
-  // ===== RENDERIZAÇÃO CONDICIONAL =====
+  // RENDERIZAÇÃO CONDICIONAL
   if (!isLoggedIn) {
     return <Login onLogin={handleLogin} />;
   }
@@ -74,7 +91,8 @@ function App() {
           contact={contactToEdit}
           onUpdate={updateContact}
         />
-      )}
+      )} 
+      {/* Leitura da Lista de Contatos */}
       {activeScreen === "list" && (
         <ContactList
           contacts={contacts}
