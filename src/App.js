@@ -9,6 +9,10 @@ import ContactList from "./components/ContactList";
 import "./App.css";
 
 function App() {
+  // As credenciais fixas para o acesso único (Admin / 123)
+  const USERNAME_CORRETO = "Admin";
+  const PASSWORD_CORRETA = "123";
+
   // Estados globais
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Inicializa sem estar logado
   const [username, setUsername] = useState(""); // Criação de espaço vazio para adição de username
@@ -22,18 +26,23 @@ function App() {
 
   const [contactToEdit, setContactToEdit] = useState(null);
 
-  // LOGIN
-  const handleLogin = (user) => {
-    if (user && user.trim() !== "") { // .trim utilizado para limpeza e 'correção' de username na parte de login
-      // Exemplo:
-      // user: '  andre ' | se transforma em 'andre'.
-      setUsername(user.trim()); 
-      // Após .trim, retorna o login como verdadeiro.
+  // Função de Login alterada para acesso "único"
+  // Recebe o usuário e a senha para validação
+  const handleLogin = (user, pass) => {
+    // 1. Limpa os campos para garantir que não haja espaços extras na comparação.
+    const cleanedUser = user ? user.trim() : "";
+    const cleanedPass = pass ? pass.trim() : "";
+
+    // 2. Verifica se as credenciais correspondem aos valores fixos.
+    if (cleanedUser === USERNAME_CORRETO && cleanedPass === PASSWORD_CORRETA) {
+      setUsername(cleanedUser);
+      // Após validação, define o login como verdadeiro.
       setIsLoggedIn(true);
       setActiveScreen("welcome");
-      // Caso os campos não estejam completos, retorna:
+      alert(`Bem-vindo(a), ${cleanedUser}!`);
     } else {
-      alert("Preencha os campos corretamente!");
+      // Caso as credenciais não estejam corretas.
+      alert("Usuário ou Senha inválidos!");
     }
   };
 
@@ -44,8 +53,7 @@ function App() {
     setActiveScreen("welcome");
   };
 
-  // CRUD
-  // Create - Read - Update - Delete
+  // CRUD - Create - Read - Update - Delete =====
 
   // Os Dados de contatos NUNCA devem ser alterados dentro do Array const contacts
   // A alteração só pode ser realizada em setContacts
@@ -75,6 +83,7 @@ function App() {
 
   // RENDERIZAÇÃO CONDICIONAL
   if (!isLoggedIn) {
+    // Se não estiver logado, exibe o componente Login, passando a função handleLogin
     return <Login onLogin={handleLogin} />;
   }
 

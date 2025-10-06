@@ -7,8 +7,12 @@ function Login({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Adição de Login
+    // Envio de objetos/valores para a função onLogin
     if (username.trim() && password.trim()) {
-      onLogin(username);
+      // Passa o usuário e a senha
+      onLogin(username.trim(), password.trim());
     } else {
       alert("Por favor, preencha todos os campos!");
     }
