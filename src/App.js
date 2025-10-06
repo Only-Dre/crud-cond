@@ -26,8 +26,8 @@ function App() {
 
   const [contactToEdit, setContactToEdit] = useState(null);
 
-  // Função de Login alterada para acesso "único"
-  // Recebe o usuário e a senha para validação
+  // Função de Login alterada para acesso "único".
+  // Recebe o usuário e a senha para validação.
   const handleLogin = (user, pass) => {
     // 1. Limpa os campos para garantir que não haja espaços extras na comparação.
     const cleanedUser = user ? user.trim() : "";
