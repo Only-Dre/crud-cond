@@ -1,17 +1,24 @@
+/* App.css - Versão Dark Mode */
 body {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #f7f8fb;
+  /* NOVO: Fundo escuro conforme solicitado */
+  background: #121212; 
   margin: 0;
-  color: #222;
+  /* NOVO: Cor do texto padrão para fundos escuros */
+  color: #f5f5f5; 
+  min-height: 100vh; /* Garante que o fundo escuro cubra toda a tela */
 }
 
-.app-container {
+/* CONTAINER PRINCIPAL: Onde todo o conteúdo fica */
+.App {
   max-width: 900px;
   margin: 24px auto;
-  background: white;
+  /* NOVO: Fundo mais suave para contraste com o body */
+  background: #1e1e1e; 
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  /* Sombra sutil para destacar o container */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4); 
 }
 
 header {
@@ -37,27 +44,45 @@ main {
   gap: 10px;
   max-width: 480px;
 }
+
+/* NOVO: Inputs com cores de dark mode e texto claro */
 input[type="text"], input[type="password"] {
-  padding: 8px 10px;
+  padding: 10px 12px;
   font-size: 14px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-}
-button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #2d6cdf;
-  color: white;
-  font-weight: 600;
-}
-button.secondary {
-  background: #e6e9f2;
-  color: #222;
+  border-radius: 8px;
+  border: 1px solid #333; /* Borda escura */
+  background: #252525; /* Fundo do input */
+  color: #f5f5f5; /* Texto digitado claro */
 }
 
-/* list */
+/* NOVO: Botão Primário - Azul */
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px; /* Arredondado para toque moderno */
+  cursor: pointer;
+  background: #4a90e2; /* Azul Primário */
+  color: white;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #357ab8; /* Azul um pouco mais escuro no hover */
+}
+
+/* NOVO: Botão Secundário - Contraste suave */
+button.secondary {
+  background: #333; /* Cinza escuro suave */
+  color: #f5f5f5;
+}
+
+button.secondary:hover {
+    background: #444; 
+}
+
+
+/* list (Manteremos o estilo de lista mais detalhado no Components.css) */
 .contact-list {
   margin-top: 10px;
   width: 100%;
@@ -66,8 +91,8 @@ button.secondary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 12px;
+  border-bottom: 1px solid #333; /* Linha divisória escura */
 }
 .contact-info { display:flex; gap:12px; align-items:center; }
 .contact-actions button { margin-left: 8px; }
