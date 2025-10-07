@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import "./Components.css";
 
 function Login({ onLogin }) {
+  // Nome e Senha começam vazios
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Adição de Login
-    // Envio de objetos/valores para a função onLogin
-    if (username.trim() && password.trim()) {
-      // Passa o usuário e a senha
-      onLogin(username.trim(), password.trim());
+    // Utilização de Trimming
+    const user = username.trim();
+    const pass = password.trim();
+
+    // Verifica se os campos estão preenchidos, eliminando espaços extras
+    if (user && pass) {
+      // Envia o usuário E a senha para a função de login no App.js
+      onLogin(user, pass); 
     } else {
-      alert("Por favor, preencha todos os campos!");
+      // Caso os campos não estejam completos, retorna:
+      alert("Preencha todos os campos.");
     }
   };
 
@@ -30,7 +35,7 @@ function Login({ onLogin }) {
           className="input"
         />
         <input
-          type="password"
+          type="password" // Tipo 'password' para ocultar a digitação da senha
           placeholder="Senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

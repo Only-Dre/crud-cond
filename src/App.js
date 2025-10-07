@@ -26,14 +26,14 @@ function App() {
 
   const [contactToEdit, setContactToEdit] = useState(null);
 
-  // Função de Login alterada para acesso "único".
-  // Recebe o usuário e a senha para validação.
+  // Função de Login
+  // Recebe o usuário e a senha para validação
   const handleLogin = (user, pass) => {
-    // 1. Limpa os campos para garantir que não haja espaços extras na comparação.
+    // Limpa os campos para garantir que não haja espaços extras na comparação.
     const cleanedUser = user ? user.trim() : "";
     const cleanedPass = pass ? pass.trim() : "";
 
-    // 2. Verifica se as credenciais correspondem aos valores fixos.
+    // Verifica se as credenciais correspondem aos valores fixos.
     if (cleanedUser === USERNAME_CORRETO && cleanedPass === PASSWORD_CORRETA) {
       setUsername(cleanedUser);
       // Após validação, define o login como verdadeiro.
@@ -53,7 +53,7 @@ function App() {
     setActiveScreen("welcome");
   };
 
-  // CRUD - Create - Read - Update - Delete =====
+  // CRUD - Create - Read - Update - Delete
 
   // Os Dados de contatos NUNCA devem ser alterados dentro do Array const contacts
   // A alteração só pode ser realizada em setContacts
