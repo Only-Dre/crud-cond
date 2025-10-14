@@ -46,6 +46,7 @@
   cursor: pointer;
   transition: 0.3s;
   margin-top: 5px; /* Adiciona espaço acima do botão */
+  margin-right: 5px; 
 }
 
 .btn:hover {
@@ -59,6 +60,7 @@
 
 /* Botões específicos */
 .btn.delete {
+  margin-right: 5px;
   background: #e74c3c; /* Vermelho */
 }
 .btn.delete:hover {

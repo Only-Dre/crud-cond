@@ -36,6 +36,7 @@ function ContactForm({ contactToEdit, onSave, setActiveScreen }) { // Adicionado
 
         // Validação: Telefone - Usando REGEX para 11 dígitos numéricos
         // A Expressão Regular /^\d{11}$/ garante: [^] Início, [\d{11}] exatamente 11 números, [$] Fim.
+        // Ainda não há condição de ".trim" para cortar o espaço entre o () do DDD e o número.
         if (!/^\d{11}$/.test(phone)) {
             tempErrors.phone = "O telefone deve ter 11 dígitos (apenas números).";
             isValid = false;
